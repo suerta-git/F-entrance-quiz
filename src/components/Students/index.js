@@ -9,6 +9,21 @@ class Students extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    this.fetchStudents();
+  };
+
+  fetchStudents = () => {
+    fetch('http://localhost:8080/student', {
+      method: 'GET',
+      mode: 'cors',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ students: data });
+      });
+  };
+
   render() {
     return (
       <div>
