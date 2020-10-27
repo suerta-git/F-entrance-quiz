@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StudentGroupsContainer from '../containers/StudentsContainer';
 import './App.scss';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div data-testid="app" className="App">
         Hello World
+        <StudentGroupsContainer />
       </div>
     );
   }
