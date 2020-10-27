@@ -13,15 +13,17 @@ class Students extends React.Component {
     this.fetchStudents();
   };
 
-  fetchStudents = () => {
-    fetch('http://localhost:8080/student', {
-      method: 'GET',
-      mode: 'cors',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ students: data });
+  fetchStudents = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/student', {
+        method: 'GET',
+        mode: 'cors',
       });
+      const students = await response.json();
+      this.setState({ students });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   render() {
