@@ -1,4 +1,5 @@
 import React from 'react';
+import StudentItem from '../Students/StudentItem';
 
 class Groups extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Groups extends React.Component {
       <div>
         <ul>
           {group.students.map((student) => (
-            <li key={student.id}>{`${student.id}. ${student.name}`}</li>
+            <StudentItem key={student.id} student={student} />
           ))}
         </ul>
       </div>

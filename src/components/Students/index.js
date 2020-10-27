@@ -1,4 +1,5 @@
 import React from 'react';
+import StudentItem from './StudentItem';
 
 class Students extends React.Component {
   constructor(props) {
@@ -8,14 +9,14 @@ class Students extends React.Component {
     };
   }
 
-  renderStudent = (student) => <li key={student.id}>{`${student.id}. ${student.name}`}</li>;
-
   render() {
     return (
       <div>
         <h2>{this.props.title}</h2>
         <ul>
-          {this.state.students.map(this.renderStudent)}
+          {this.state.students.map((student) => (
+            <StudentItem key={student.id} student={student} />
+          ))}
           <li>
             <button type="button">+ 添加学员</button>
           </li>
