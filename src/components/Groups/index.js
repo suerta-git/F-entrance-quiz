@@ -6,8 +6,25 @@ class Groups extends React.Component {
     super(props);
     this.state = {
       groups: [],
+      isLoading: false,
     };
   }
+
+  handleClick = async () => {
+    try {
+      this.setState({ isLoading: true });
+      const response = await fetch('http://localhost:8080/group', {
+        method: 'GET',
+        mode: 'cors',
+      });
+      const groups = await response.json();
+      this.setState({ groups });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.setState({ isLoading: false });
+    }
+  };
 
   renderGroup = (group) => (
     <li key={group.name}>
@@ -27,7 +44,9 @@ class Groups extends React.Component {
       <div>
         <nav>
           <h2>{this.props.title}</h2>
-          <button type="button">分组学员</button>
+          <button type="button" onClick={this.handleClick} disabled={this.state.isLoading}>
+            分组学员
+          </button>
         </nav>
         <ul>{this.state.groups.map(this.renderGroup)}</ul>
       </div>
