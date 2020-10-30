@@ -26,9 +26,11 @@ class Groups extends React.Component {
     }
   };
 
+  // TODO GTB-工程实践: + 抽取render方法很好 (这里也可以提取一个组件)
   renderGroup = (group) => (
     <li key={group.name}>
       <div>{group.name}</div>
+      {/* TODO GTB-工程实践: - 没有必要的html标签嵌套 */}
       <div>
         <ul>
           {group.students.map((student) => (
@@ -42,6 +44,7 @@ class Groups extends React.Component {
   render() {
     return (
       <div>
+        {/* TODO GTB-知识点: * 这里最好使用<header> 标签 */}
         <nav>
           <h2>{this.props.title}</h2>
           <button type="button" onClick={this.handleClick} disabled={this.state.isLoading}>

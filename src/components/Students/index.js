@@ -16,6 +16,7 @@ class Students extends React.Component {
   };
 
   fetchStudents = async () => {
+    // TODO GTB-工程实践: * 建议将api数据请求封装到单独的service
     try {
       const response = await fetch('http://localhost:8080/student', {
         method: 'GET',
@@ -87,6 +88,7 @@ class Students extends React.Component {
             <StudentItem key={student.id} student={student} />
           ))}
           <li>
+            {/* TODO GTB-知识点: * 添加学员这里最好使用两个标签，input 和 button,根据状态isInputing显示不同标签 */}
             <input
               type="text"
               value={this.state.addStudent}
